@@ -38,15 +38,7 @@ paths:
               example: This is a demo API.
         '400':
           $ref: '#/components/responses/badRequest'
-  /activities:
-    post:
-      tags:
-        - Activities
-      operationId: PostActivity
-      summary: Record activity
-      requestBody:
-        content:
-          application/json:
+  /a
             schema:
               $ref: '#/components/schemas/activity'
       responses:
