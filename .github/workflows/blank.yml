@@ -15,6 +15,7 @@ jobs:
 
       - name: Run npx command
         run: |
+          REDOCLY_AUTHORIZATION=${{ secrets.REDOCLY_AUTHORIZATION }}
           npx @redocly/cli push docs/museum.yaml \
               --organization "testing_redocly" \
               --project "taras-and-bohdan-onboarding" \
