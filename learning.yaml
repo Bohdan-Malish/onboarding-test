@@ -23,7 +23,8 @@ tags:
     description: Endpoints for generating and retrieving reports on learner progress, activity completion, and overall performance. Use these APIs to access and analyze data on individual learners or groups, as well as export reports for further analysis.
   - name: Other
     description: Other endpoints are described here.
-paths:
+pat
+hs:
   /:
     get:
       tags:
