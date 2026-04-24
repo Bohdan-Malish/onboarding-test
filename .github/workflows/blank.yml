@@ -14,8 +14,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run npx command
+        env:
+          REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
         run: |
-          REDOCLY_AUTHORIZATION=${{ secrets.REDOCLY_AUTHORIZATION }}
+          echo $REDOCLY_AUTHORIZATION
+          REDOCLY_AUTHORIZATION=$REDOCLY_AUTHORIZATION
           npx @redocly/cli push docs/museum.yaml \
               --organization "testing_redocly" \
               --project "taras-and-bohdan-onboarding" \
