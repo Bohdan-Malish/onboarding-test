@@ -74,22 +74,6 @@ paths:
                 $ref: '#/components/schemas/quiz'
         '400':
           $ref: '#/components/responses/badRequest'
-    get:
-      tags:
-        - Quizzes
-      operationId: GetQuizzes
-      summary: Get quizzes
-      responses:
-        '200':
-          description: Retrieved.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/quiz'
-        '400':
-          $ref: '#/components/responses/badRequest'
   /checklists:
     post:
       tags:
