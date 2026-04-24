@@ -15,12 +15,18 @@ jobs:
 
       - name: Run npx command
         run: |
-          REDOCLY_ENVIRONMENT=reunite npx @redocly/cli@2.29.1 push ./  \
-            --organization "testing_redocly" \
-            --project "taras-and-bohdan-onboarding" \
-            --mount-path "/testsssss" \
-            --domain "https://app.cloud.redocly.com" \
-            --wait-for-deployment
-            --branch "<Your branch name>" \
-            --author "<Your name and email>" \
-            --message "<Your commit message>" \
+          npx @redocly/cli push docs/museum.yaml \
+              --organization "testing_redocly" \
+              --project "taras-and-bohdan-onboarding" \
+              --mount-path "/testsssss" \
+              --domain "https://app.cloud.redocly.com" \
+              --default-branch "${{ github.event.repository.default_branch || github.event.repository.master_branch }}" \
+              --branch "${{ github.ref_name }}" \
+              --author "${{ github.event.head_commit.author.name }} <${{ github.event.head_commit.author.email }}>" \
+              --commit-sha "${{ github.event.head_commit.id }}" \
+              --commit-url "${{ github.event.head_commit.url }}" \
+              --namespace "${{ github.event.repository.owner.login }}" \
+              --repository "${{ github.event.repository.name }}" \
+              --created-at "${{ github.event.head_commit.timestamp }}" \
+              --message "${{ github.event.head_commit.message }}" \
+              --wait-for-deployment
