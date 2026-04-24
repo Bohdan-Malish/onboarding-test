@@ -1,26 +1,31 @@
-name: 'Push to Redocly'
+name: Run NPX Script
 
 on:
   push:
-    branches:
-      - '**'
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
-  push:
+  run-npx:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      statuses: write
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: 'Push files and wait for deployment'
-        uses: redocly/reunite-push-action@v1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          organization: 'testing_redocly'
-          project: 'taras-and-bohdan-onboarding'
-          mountPath: '/tests'
-          files: 'guide.md'
-          domain: 'https://app.cloud.redocly.com'
-        env:
-          REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
+          node-version: '20'
+
+      - name: Install dependencies (optional)
+        run: npm install
+
+      - name: Run npx command
+        run: |
+          REDOCLY_ENVIRONMENT=reunite npx @redocly/cli@2.29.1 push ./  \
+            --organization "testing_redocly" \
+            --project "taras-and-bohdan-onboarding" \
+            --mount-path "/testsssss" \
+            --domain "https://app.cloud.redocly.com" \
+            --wait-for-deployment
