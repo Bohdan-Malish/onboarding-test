@@ -19,7 +19,7 @@ jobs:
         run: |
           echo $REDOCLY_AUTHORIZATION
           REDOCLY_AUTHORIZATION=$REDOCLY_AUTHORIZATION
-          npx @redocly/cli push docs/museum.yaml \
+          npx @redocly/cli push guide.md \
               --organization "testing_redocly" \
               --project "taras-and-bohdan-onboarding" \
               --mount-path "/testsssss" \
