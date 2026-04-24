@@ -21,3 +21,6 @@ jobs:
             --mount-path "/testsssss" \
             --domain "https://app.cloud.redocly.com" \
             --wait-for-deployment
+            --branch "<Your branch name>" \
+            --author "<Your name and email>" \
+            --message "<Your commit message>" \
